@@ -1,0 +1,21 @@
+ideas = {
+	country = {
+		mobilization_laws = { 
+		law = yes
+
+		chinese_instability = {
+						
+			cost = 0
+			removal_cost = -1
+			level = 7
+			
+			available = {
+				#has_manpower_for_recruit_change_to = { value = 0.005 group = mobilization_laws }
+			}
+
+			modifier = {
+				conscription = 0.001
+			}
+			
+			cancel_if_invalid = no
+		}

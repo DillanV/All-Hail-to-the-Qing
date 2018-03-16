@@ -1,0 +1,50 @@
+﻿###########################
+# Qing Events
+###########################
+
+add_namespace = QIN_focus
+
+country_event = {
+	id = QIN_focus.1
+	title = QIN_focus.1.t
+	desc = QIN_focus.1.d
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+    is_triggered_only = yes
+    
+	option = {
+		name = QIN_focus.1.a
+        
+		600 = {
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = industrial_complex
+				level = 4 
+				instant_build = yes
+			}
+		}
+	}
+	
+	option = {
+		name = QIN_focus.1.b
+        
+		600 = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = industrial_complex
+				level = 3
+				instant_build = yes
+			}
+		}
+		602 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+

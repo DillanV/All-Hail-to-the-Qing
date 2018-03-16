@@ -1,0 +1,915 @@
+focus_tree = {
+	id = QIN_focus
+	
+	country = {
+		factor = 0
+	modifier = {
+		add = 10
+		tag = QIN
+		}
+	}
+	
+	default = yes
+	reset_on_civilwar = no
+
+	focus = {
+		id = relocate_court
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 10
+		y = 0
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 50
+			set_capital = 613 #Nanjing
+			}
+		}
+
+	focus = {
+		id = for_empire
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = relocate_court }
+		x = 10
+		y = 1
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 150
+			add_popularity = { ideology = neutrality popularity = 0.025 }
+			}
+		}
+
+	focus = {
+		id = consolidate_power
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = for_empire}
+		x = 0
+		y = 2
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 150
+			add_popularity = { ideology = neutrality popularity = 0.05 }
+			}
+		}
+
+	focus = {
+		id = cull_elite
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = consolidate_power}
+		x = 0
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = { ideology = neutrality popularity = 0.05 }
+			}
+		}
+
+	focus = {
+		id = qing_future
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = cull_elite }
+		x = 0
+		y = 4
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				600 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+						}
+					}
+				602 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+						}
+					}
+			
+			}
+		}	
+#############################Qing_Leader#############################
+	focus = {
+		id = keep_emperor
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = for_empire }
+		mutually_exclusive = { focus = mil_man }
+		mutually_exclusive = { focus = get_beuracrat }
+		x = 2
+		y = 2
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				add_country_leader_trait = inexperienced_imperialist
+			}
+		}
+	focus = {
+		id = imp_guard
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = keep_emperor }
+		x = 2
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			division_template = {
+				name = "Imperial Guard"			
+				division_names_group = CHI_INF_01
+
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+						}
+				support = {
+       					 recon = { x = 0 y = 0 }
+       					 engineer = { x = 0 y = 1 }
+						}
+					}
+			units = {
+	
+				division = {
+					name = "1st Imperial Guard"
+					location = 7014
+					division_template = "Imperial Guard"
+					start_experience_factor = 0.2 }
+				division = {
+					name = "2nd Imperial Guard"
+					location = 7014
+					division_template = "Imperial Guard"
+					start_experience_factor = 0.2 }
+				division = {
+					name = "3rd Imperial Guard"
+					location = 7014
+					division_template = "Imperial Guard"
+					start_experience_factor = 0.2 }
+				}	
+					}
+		}
+	
+	focus = {
+		id = ind_strength
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = imp_guard }
+		x = 2
+		y = 4
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				613 = {
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes }
+					}
+			}
+		}
+
+	focus = {
+		id = mil_man
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = for_empire }
+		mutually_exclusive = { focus = keep_emperor }
+		mutually_exclusive = { focus = get_beuracrat }
+		x = 4
+		y = 2
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_country_leader = {
+					name = "Tu Yu-ming"
+					picture = "GFX_portrait_chi_du_yuming"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { cornered_fox }
+							}
+				modifier = {
+					fascism_drift = 0.01
+						}
+					}
+		}
+	focus = {
+		id = armor_divs
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = mil_man }
+		x = 4
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				set_technology = { improved_light_tank = 1 } 
+				division_template = {
+					name = "Light Armor"
+					regiments = {
+						light_armor = { x = 0 y = 0 }
+						light_armor = { x = 0 y = 1 }
+       						light_armor = { x = 1 y = 0 }
+						light_armor = { x = 1 y = 1 }
+						motorized = { x = 2 y = 0 }
+       						motorized = { x = 2 y = 1 }
+							}
+					support = {
+       					 	recon = { x = 0 y = 0 }
+        					engineer = { x = 0 y = 1 }
+        					artillery = { x = 0 y = 2 }
+						}
+					}
+				}
+		}
+	
+	focus = {
+		id = arms_strength
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = armor_divs }
+		x = 4
+		y = 4
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				613 = {
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+					type = arms_factory
+					level = 8
+					instant_build = yes }
+					}
+			}
+		}
+
+	focus = {
+		id = get_beuracrat 
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = for_empire }
+		mutually_exclusive = { focus = keep_emperor }
+		mutually_exclusive = { focus = mil_man }
+		x = 6
+		y = 2
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_country_leader = {
+					name = "Wang Jingwei"
+					desc = "POLITICS_WANG_JINGWEI_DESC"
+					picture = "GFX_portrait_chi_wang_jingwei"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { political_dancer }
+					}
+				modifier = {
+					democracy_drift = 0.01
+						}
+					}
+		}
+	focus = {
+		id = more_fact
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = get_beuracrat }
+		x = 6
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				613 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes }
+					}
+				}
+		}
+	
+	focus = {
+		id = more_trade_fleet
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = more_fact }
+		x = 6
+		y = 4
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				add_equipment_to_stockpile = {
+					type = convoy_1 
+					amount = 10 
+					producer = <CHI> }
+				613 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes }
+					}
+			}
+		}
+############################################### How We Fight ###########
+#LAND#
+focus = {
+		id = by_land
+		icon = GFX_goal_generic_allies_build_infantry
+		mutually_exclusive = { focus = by_air }
+		mutually_exclusive = { focus = by_sea }
+		prerequisite = { focus = ind_strength 
+				focus = arms_strength 
+				focus = more_trade_fleet }
+		x = 0
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 2
+				category = land_doctrine
+					}
+			}
+		}
+focus = {
+		id = land_tech
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = by_land }
+		x = 0
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery }
+			add_tech_bonus = {
+				name = motorized_bonus
+				ahead_reduction = 0.5
+				uses = 1
+				category = motorized_equipment }
+					
+			}
+		}
+
+focus = {
+		id = land_means
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = land_tech }
+		x = 0
+		y = 7
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 5
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+			}
+		}
+
+#AIR#
+focus = {
+		id = by_air 
+		icon = GFX_goal_generic_allies_build_infantry
+		mutually_exclusive = { focus = by_land }
+		mutually_exclusive = { focus = by_sea }
+		prerequisite = { focus = ind_strength 
+				focus = arms_strength 
+				focus = more_trade_fleet }
+		x = 2
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 25
+			613 = { 
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+								}
+				}			
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.5
+				uses = 2
+				category = air_doctrine
+					}
+			}
+		}
+focus = {
+		id = air_tech 
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = by_air }
+		x = 2
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 5			
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 0.5
+				uses = 2
+				technology = early_fighter
+				technology = fighter1
+				technology = fighter2
+				technology = fighter3
+				technology = heavy_fighter1
+				technology = heavy_fighter2
+				technology = heavy_fighter3 }
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = naval_bomber }
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = cas_bomber }
+			}
+		}
+focus = {
+		id = air_means
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = air_tech }
+		x = 2
+		y = 7
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 5
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes }
+							}
+			743 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes }
+					}
+		}
+	}
+
+#SEA#
+focus = {
+		id = by_sea
+		icon = GFX_goal_generic_allies_build_infantry
+		mutually_exclusive = { focus = by_land }
+		mutually_exclusive = { focus = by_sea }
+		prerequisite = { focus = ind_strength 
+				focus = arms_strength 
+				focus = more_trade_fleet }
+		x = 4
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				navy_experience = 25
+				add_tech_bonus = {
+					name = navy_doc_bonus
+					bonus = 0.5
+					uses = 2
+					category = navy_doctrine
+					}
+			613 = { 
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+								}
+				}
+			}
+		}
+
+focus = {
+		id = sea_tech
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = by_sea }
+		x = 4
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 5
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = improved_light_cruiser
+				technology = advanced_light_cruiser }
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = early_destroyer
+				technology = basic_destroyer
+				technology = improved_destroyer
+				technology = advanced_destroyer }
+			}
+		}
+
+focus = {
+		id = sea_means
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = sea_tech }
+		x = 4
+		y = 7
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 5
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = dockyard
+					level = 4
+					instant_build = yes
+				}
+			   }
+			613 = { 
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes }
+			}
+		}
+}
+
+#################################################Empire Building################################
+focus = {
+		id = rebuild 
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = keep_emperor
+				focus = mil_man 
+				focus = get_beuracrat }
+		x = 9
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_war_support = .25
+			set_stability = 0.7
+			add_political_power = 30
+			add_popularity = { ideology = neutrality popularity = 0.1 }
+				}
+	}
+
+focus = {
+		id = fix_economy 
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = rebuild }
+		x = 9
+		y = 4
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				add_ideas = { civilian_economy }
+				}
+	}
+
+#Retake West
+focus = {
+		id = retake_tibet 
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = fix_economy }
+		x = 6
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_wargoal = { 
+				type = annex_everything 
+				target = TIB }
+				}
+	}
+
+focus = {
+		id = easy_prey 
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = fix_economy }
+		x = 6
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_wargoal = { 
+				type = annex_everything 
+				target = NEP 
+						 }
+				create_wargoal = { 
+				type = annex_everything 
+				target = BHU 
+						 }
+				}
+	}
+#Retake China
+focus = {
+		id = retake_china_1
+		icon = GFX_goal_generic_allies_build_infantry
+		mutually_exclusive = { focus = incorporate_china_1 }
+		prerequisite = { focus = fix_economy }
+		x = 8
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_wargoal = { 
+				type = annex_everything 
+				target = SIK
+						 }
+
+				}
+	}
+
+focus = {
+		id = retake_china_2
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = retake_china_1 }
+		x = 8
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_wargoal = { 
+				type = annex_everything 
+				target = GXC
+						 }
+
+				}
+	}
+
+focus = {
+		id = incorporate_china_1 
+		icon = GFX_goal_generic_allies_build_infantry
+		mutually_exclusive = { focus = retake_china_1 }
+		prerequisite = { focus = fix_economy }
+		x = 10
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				puppet = SIK
+				}
+	}
+
+focus = {
+		id = incorporate_china_2
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = incorporate_china_1 }
+		x = 10
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				puppet  = GXC
+				}
+	}
+
+focus = {
+		id = retake_china_3
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = retake_china_2 
+				 focus = incorporate_china_2 }
+		x = 9
+		y = 7
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_wargoal = { 
+				type = annex_everything 
+				target = PRC
+						 }
+
+				}
+	}
+
+#The Full Empire
+focus = {
+		id = retake_empire
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = fix_economy }
+		x = 13
+		y = 5
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				create_wargoal = { 
+					type = take_state_focus 
+					target = MON }
+				create_wargoal = { 
+					type = take_state_focus 
+					target = SOV }
+				}
+	}
+
+focus = {
+		id = annex_MEN
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = fix_economy }
+		x = 12
+		y = 6
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+					annex_country = { target = EST } 
+			}
+	}
+
+
+##########################Grand Asia############################
+
+
+focus = {
+		id = no_west_imp_1
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = for_empire }
+		available = {
+			is_puppet = no
+			has_army_manpower = { size > 1000000 }
+		}
+		x = 16
+		y = 2
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				set_autonomy = { target = VIN 
+				autonomy_state = autonomy_free }
+				set_autonomy = { target = MAL
+				autonomy_state = autonomy_free }
+				}
+	}
+
+focus = {
+		id = incorporate_SE_asia
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = no_west_imp_1 }
+		x = 14
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				annex = MAL 
+				annex = SIA 
+				annex = VIN 
+			}
+	}
+
+focus = {
+		id = incorporate_SE_asia
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = no_west_imp_1 }
+		x = 14
+		y = 3
+		cost = 0
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				puppet = { MAL }
+				puppet = { SIA }
+				puppet = { VIN }
+			}
+	}
