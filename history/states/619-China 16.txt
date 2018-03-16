@@ -12,8 +12,7 @@ state={
 	}
 
 	history={
-		owner = SIK
-		add_core_of = SIK
+		owner = QIN
 		add_core_of = QIN
 		add_core_of = PRC
 		buildings = {
